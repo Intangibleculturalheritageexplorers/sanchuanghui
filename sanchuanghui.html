@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>非遗洋探客 · 中外青年共创乡村非遗之旅</title>
+    <!-- 思源黑体 & 方正兰亭黑 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans SC', '思源黑体', '方正兰亭黑', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background-color: #FFFFFF;
+            color: #1e1e1e;
+            line-height: 1.5;
+        }
+        :root {
+            --primary-red: #C3272B;
+            --primary-blue: #2A5A8C;
+            --accent-yellow: #F8F51F;
+            --light-bg: #F9F7F4;
+            --gray-text: #4a4a4a;
+            --border-light: #eaeaea;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        /* 导航栏 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--primary-red);
+            flex-wrap: wrap;
+            background-color: white;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--primary-red);
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        .logo span {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary-blue);
+            margin-left: 5px;
+        }
+        .chinese-youth-badge {
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 14px;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 500;
+            flex-wrap: wrap;
+            /* 让导航链接整体向右移动，实现“合作模块左边的模块右移”效果 */
+            margin-left: auto;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2e2e2e;
+            font-size: 16px;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+        .nav-links a.active {
+            color: var(--primary-red);
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary-red);
+        }
+        
+        /* ===== 五张照片固定层（左二 中一 右二） ===== */
+        .five-photos-fixed {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .photos-flex {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+        .photo-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .photo-col.middle {
+            flex: 2;
+        }
+        .photo-item {
+            flex: 1;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: default;
+            transition: transform 0.2s;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.2);
+            background-color: #ddcfb2;
+            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%);
+        }
+        .photo-item:hover {
+            transform: scale(1.01);
+            z-index: 5;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        /* 覆盖文字 */
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            .overlay-text {
+                font-size: 28px;
+                white-space: normal;
+                text-align: center;
+            }
+            .five-photos-fixed {
+                height: 300px;
+            }
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            background-color: white;
+            padding: 30px 0 0;
+        }
+        .module-page {
+            display: none;
+        }
+        .module-page.active {
+            display: block;
+        }
+        
+        /* 统一标题样式（红杠 + 主标题 + 副标题） */
+        .section-title {
+            font-size: 38px;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            border-left: 8px solid var(--primary-red);
+            padding-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            line-height: 1.2;
+        }
+        .section-sub {
+            font-size: 18px;
+            color: var(--gray-text);
+            font-weight: 400;
+            background: var(--light-bg);
+            padding: 5px 15px;
+            border-radius: 40px;
+            white-space: nowrap;
+        }
+        
+        /* 发现非遗模块卡片 */
+        .discover-section {
+            margin: 0 0 30px 0;
+        }
+        .heritage-card {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 70px;
+            background: #fcfcfc;
+            border-radius: 40px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            flex-wrap: wrap; /* 允许子项换行，用于放置视频占位 */
+        }
+        .heritage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(195,39,43,0.1);
+        }
+        .heritage-card.reverse {
+            flex-direction: row-reverse;
+        }
+        /* 视频样式 */
+        video {
+            width: 100%;
+            border-radius: 24px;
+            margin-bottom: 20px;
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+        }
+        .heritage-text {
+            flex: 1.2;
+            min-width: 300px;
+        }
+        .heritage-text h3 {
+            font-size: 32px;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .region-tag {
+            font-size: 14px;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .heritage-text .subhead {
+            font-size: 20px;
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed var(--accent-yellow);
+            padding-bottom: 10px;
+        }
+        .heritage-text p {
+            font-size: 18px;
+            color: #2e2e2e;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .heritage-image {
+            flex: 0.9;
+            height: 350px;
+            border-radius: 30px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 12px 12px 0 var(--primary-blue);
+            border: 2px solid #333;
+            background-color: #e0d6c8;
+            background-image: linear-gradient(45deg, #b0a28f 25%, transparent 25%);
+            transition: box-shadow 0.2s;
+            min-width: 250px;
+        }
+        .heritage-card:hover .heritage-image {
+            box-shadow: 8px 8px 0 var(--primary-red);
+        }
+        
+        /* ========== 地图标记样式 ========== */
+        .map-frame {
+            position: relative;
+            width: 100%;
+            border: 3px solid #333;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 8px 8px 0 #C3272B;
+            background-color: #cfc6b6;
+            margin-bottom: 25px;
+        }
+        .map-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+            background-color: #cfc6b6;
+        }
+        .marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 30;
+            filter: drop-shadow(0 4px 6px black);
+        }
+        .marker-num {
+            width: 42px;
+            height: 42px;
+            background: #C3272B;
+            border: 3px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 22px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        .marker-num.mongolia {
+            background: #1d754b;
+        }
+        .guide-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid black;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            pointer-events: none;
+        }
+        
+        /* ========== 体验项目模块专用样式 ========== */
+        .experience-section {
+            margin: 0 0 40px 0;
+        }
+
+        /* 路线卡片通用 */
+        .route-card {
+            margin-bottom: 70px;
+        }
+
+        /* 独立标题条 - 山东风格（红色系） */
+        .route-title-block-shandong {
+            background: linear-gradient(145deg, #C3272B 0%, #a01e22 100%);
+            padding: 25px 35px;
+            border-radius: 60px 60px 60px 60px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 25px rgba(195,39,43,0.3);
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .route-title-block-shandong::after {
+            content: "🏮";
+            font-size: 80px;
+            position: absolute;
+            right: 20px;
+            bottom: -10px;
+            opacity: 0.15;
+            transform: rotate(10deg);
+        }
+        .route-title-block-shandong .title-main {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        .route-title-block-shandong .title-main span {
+            font-size: 24px;
+            font-weight: 400;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 60px;
+            margin-left: 15px;
+        }
+        .route-title-block-shandong .badge {
+            background: #F8F51F;
+            color: #C3272B;
+            font-weight: 900;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* 独立标题条 - 内蒙古风格（绿色系） */
+        .route-title-block-mongolia {
+            background: linear-gradient(145deg, #1d754b 0%, #145a39 100%);
+            padding: 25px 35px;
+            border-radius: 60px 60px 60px 60px;
+            margin-bottom: 25px;
+            box-shadow: 0 15px 25px rgba(29,117,75,0.3);
+            border: 2px solid #F8F51F;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .route-title-block-mongolia::after {
+            content: "🐎";
+            font-size: 80px;
+            position: absolute;
+            right: 20px;
+            bottom: -10px;
+            opacity: 0.15;
+            transform: rotate(-5deg);
+        }
+        .route-title-block-mongolia .title-main {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        .route-title-block-mongolia .title-main span {
+            font-size: 24px;
+            font-weight: 400;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 60px;
+            margin-left: 15px;
+        }
+        .route-title-block-mongolia .badge {
+            background: #F8F51F;
+            color: #1d754b;
+            font-weight: 900;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* 卡片内容区域 - 山东风格 */
+        .route-content-shandong {
+            background: #fcfcfc;
+            border-radius: 50px;
+            padding: 40px;
+            border: 2px solid #C3272B;
+            box-shadow: 0 20px 35px rgba(195,39,43,0.08);
+        }
+
+        /* 卡片内容区域 - 内蒙古风格 */
+        .route-content-mongolia {
+            background: #fcfcfc;
+            border-radius: 50px;
+            padding: 40px;
+            border: 2px solid #1d754b;
+            box-shadow: 0 20px 35px rgba(29,117,75,0.08);
+        }
+
+        .core-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .core-item {
+            background: #f0eae1;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--primary-blue);
+            border-left: 5px solid var(--primary-red);
+        }
+        .core-item.mongolia {
+            border-left: 5px solid #1d754b;
+        }
+        .itin-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .day-block {
+            flex: 1 1 250px;
+            background: white;
+            border-radius: 35px;
+            padding: 25px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .day-block h4 {
+            font-size: 28px;
+            color: var(--primary-red);
+            border-bottom: 3px solid var(--accent-yellow);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .day-block.mongolia h4 {
+            color: #1d754b;
+        }
+        .day-block ul {
+            list-style: none;
+        }
+        .day-block li {
+            margin-bottom: 14px;
+            padding-left: 28px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%232A5A8C"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;
+            background-size: 18px;
+            color: #2e2e2e;
+        }
+        .interact-box {
+            background: #eef3f9;
+            border-radius: 40px;
+            padding: 30px;
+            margin: 30px 0 20px;
+            border-left: 10px solid var(--primary-red);
+        }
+        .interact-box.mongolia {
+            border-left: 10px solid #1d754b;
+            background: #e2f0e8;
+        }
+        .interact-box h5 {
+            font-size: 26px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .interact-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        .interact-item {
+            flex: 1 1 200px;
+            background: white;
+            border-radius: 30px;
+            padding: 20px;
+            font-weight: 500;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.04);
+        }
+        .interact-item strong {
+            color: var(--primary-red);
+            font-size: 20px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .interact-item.mongolia strong {
+            color: #1d754b;
+        }
+        .meta-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #bbb;
+        }
+        .meta-tag {
+            background: var(--primary-blue);
+            color: white;
+            padding: 6px 25px;
+            border-radius: 60px;
+            font-size: 18px;
+        }
+        .digital-assets {
+            background: #1e1e1e;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 60px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .digital-assets span {
+            color: var(--accent-yellow);
+            margin: 0 5px;
+        }
+        .map-mini-hint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            color: var(--primary-blue);
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .map-mini-hint img {
+            height: 30px;
+            border-radius: 8px;
+        }
+        /* ========== 文创商城模块样式 ========== */
+        .mall-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .product-card {
+            background: white;
+            border-radius: 40px;
+            padding: 25px 20px 25px 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            border: 2px solid #f0e8dd;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(195,39,43,0.1);
+        }
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #e8e0d5;
+            background-image: linear-gradient(45deg, #d2c8b9 25%, transparent 25%);
+            border-radius: 32px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9a8f7e;
+            font-size: 18px;
+            font-weight: 500;
+            border: 2px dashed var(--primary-blue);
+            background-size: 20px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image span {
+            background: rgba(255,255,255,0.7);
+            padding: 6px 15px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+            color: #1e1e1e;
+            border: 1px solid var(--primary-red);
+        }
+        .product-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        .product-desc {
+            font-size: 16px;
+            color: #4a4a4a;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex: 1;
+        }
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px dashed #ccc;
+            padding-top: 15px;
+            margin-top: 5px;
+        }
+        .product-price {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-red);
+        }
+        .product-tag {
+            background: var(--accent-yellow);
+            color: #1e1e1e;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 40px;
+            font-size: 14px;
+        }
+        .mall-footer-note {
+            text-align: center;
+            background: #f3efe9;
+            padding: 30px;
+            border-radius: 60px;
+            margin-top: 30px;
+            color: var(--primary-blue);
+            font-size: 20px;
+            font-weight: 500;
+        }
+        /* 空白模块样式 (备用) */
+        .placeholder-module {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--light-bg);
+            border-radius: 60px;
+            margin: 0 0 40px 0;
+            color: #888;
+            font-size: 24px;
+            border: 2px dashed #ccc;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        footer {
+            border-top: 3px solid var(--primary-red);
+            margin-top: 50px;
+            padding: 40px 0;
+            background-color: #faf8f6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo-area">
+                <div class="logo">非遗洋探客<span>· 让非遗被世界看见</span></div>
+                <div class="chinese-youth-badge">中国青年</div>
+            </div>
+            <div class="nav-links">
+                <a data-module="discover">发现非遗</a>
+                <a data-module="experience">体验项目</a>
+                <a data-module="we-wall">WE墙社区</a>
+                <a data-module="mall">文创商城</a>
+                <!-- 合作共建模块已删除 -->
+                <a data-module="about">关于我们</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- 五张照片固定层 -->
+    <div class="five-photos-fixed">
+        <div class="photos-flex">
+            <div class="photo-col">
+                <div class="photo-item" style="background-image:url(./三创会/e0c9bec825cba9e00a8ac34c1acde0ea.jpg) ;"></div>
+                <div class="photo-item" style="background-image: url(./三创会/c5a12794b82a48e88733b047def0ca97.jpg);"></div>
+            </div>
+            <div class="photo-col middle">
+                <div class="photo-item" style="background-image: url(./三创会/微信图片_20260222210403_88_37.jpg);"></div>
+            </div>
+            <div class="photo-col">
+                <div class="photo-item" style="background-image: url(./三创会/f97e60dded488da43b46150fd101ae80.jpg);"></div>
+                <div class="photo-item" style="background-image: url(./三创会/d8dc5f46bf4be8195fcfa8781c9900a7.jpg);"></div>
+            </div>
+        </div>
+        <div class="overlay-text">让非遗，被世界看见</div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <div class="container">
+            <!-- 发现非遗模块 (已添加三个视频) -->
+            <section id="discover-page" class="module-page">
+                <div class="discover-section">
+                    <!-- 统一标题结构 -->
+                    <div class="section-title">
+                        🌾 发现非遗 · 繁星点点
+                        <span class="section-sub">现已收录6项传统技艺</span>
+                    </div>
+                    
+                    <!-- 山东日照过门笺 -->
+                    <div class="heritage-card">
+                        <!-- 过门笺视频 -->
+                        <video controls preload="metadata">
+                            <source src="./三创会/guomenjian.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                        <div class="heritage-text">
+                            <h3>山东日照 · 过门笺 <span class="region-tag">📍日照</span></h3>
+                            <div class="subhead">“一纸红笺，贴满门楣五百年”</div>
+                            <p>莒县过门笺是山东省日照市莒县的传统美术，2009年列入人类非物质文化遗产名录。其渊源可上溯至明代，康熙十三年重修朝元宫壁画中已有贴过门笺的民舍画面 。过门笺以刻纸为主，用刻刀、蜡盘精雕细琢，图案多用象征、谐音、寓意表达民众对美好生活的向往，如“富贵不断头”“八宝”“古钱”等 。制作时需设计模板、打制刀具、蜡盘定型，单色或多色套刻，工艺精细。传承人来逢强精研47载，设计出300余种样式，还创作“乡村振兴”“精忠报国”等新题材，让这门手艺在当代焕发新生 。</p>
+                            <p>🌱 非遗内涵：过门笺承载着鲁南地区春节习俗与乡土记忆，是农耕文明与民间审美的结晶。每一刀刻下的不仅是图案，更是对风调雨顺、国泰民安的祈愿。</p>
+                        </div>
+                        <div class="heritage-image" style="background-image: url(./三创会/1280.avif);"></div>
+                    </div>
+                    
+                    <!-- 山东日照缠花 -->
+                    <div class="heritage-card reverse">
+                        <!-- 缠花视频 -->
+                        <video controls preload="metadata">
+                            <source src="./三创会/chanhua.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                        <div class="heritage-text">
+                            <h3>山东日照 · 缠花 <span class="region-tag">📍日照</span></h3>
+                            <div class="subhead">“綵树对缠花——北宋诗中的指尖艺术”</div>
+                            <p>缠花最早见于北宋宋祁《春帖子词》：“彩树对缠花”，是古人以丝线缠绕纸板、铜丝制成的仿生花，又称“立体绣花”“线艺雕塑” 。国内主要分湖北英山缠花、福建厦门“春仔花”、台湾客家缠花三支，同根同源。英山缠花2011年列入湖北非遗，省级传承人陈广英作品《春兰献瑞》登上2025年春晚，李子柒佩戴的臂饰即为此作 。缠花工艺需经纸板制作、缠丝、组合，成品精巧灵动，既可作发饰、摆件，也用于婚嫁、节庆。武汉纺织大学郭丽教授团队研究十余年，创新出《二十四节气缠花胸针》等现代文创，获省级一等奖 。</p>
+                            <p>🌸 文化内涵：缠花融合工笔画精致与刺绣丝理，体现中国人对自然生命的哲学观。它曾是婚嫁礼仪的寄托，如今成为两岸文化交流的纽带，丝线缠绕间是千年未断的文化血脉。</p>
+                        </div>
+                        <div class="heritage-image" style="background-image: url(./三创会/574ebd3185a740ab977e6560ab515d39.jpeg);"></div>
+                    </div>
+                    
+                    <!-- 山东日照刘氏盘扣 (无视频) -->
+                    <div class="heritage-card">
+                        <div class="heritage-text">
+                            <h3>山东日照 · 刘氏盘扣 <span class="region-tag">📍日照</span></h3>
+                            <div class="subhead">“方寸盘丝扣，衣襟上的中国风”</div>
+                            <p>刘氏盘扣源自清代，历经六代传承，是日照市传统服饰手工技艺的代表。它以铜丝、棉线为骨，绸缎为面，通过折叠、缝纫、盘绕等工序制成形态各异的扣子，兼具实用与装饰性。盘扣图案丰富，有寓意吉祥的“蝴蝶”“琵琶”，也有展现风骨的“梅花”“兰花”。2016年列入山东省非物质文化遗产名录。传承人刘女士在保留传统的同时，将盘扣与现代饰品结合，开发出耳饰、胸针等文创，让古老技艺走进日常。</p>
+                            <p>🧵 非遗内涵：盘扣不仅固定衣襟，更凝结了民间审美与生活智慧。每一枚盘扣都是手工温度与东方美学的交织，在一针一线中传递着家族的祝福与记忆。</p>
+                        </div>
+                        <div class="heritage-image" style="background-image: url(./三创会/刘氏盘扣.jpeg);"></div>
+                    </div>
+                    
+                    <!-- 内蒙古锡林郭勒马头琴 -->
+                    <div class="heritage-card reverse">
+                        <!-- 马头琴视频 -->
+                        <video controls preload="metadata">
+                            <source src="./三创会/matouqin.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放。
+                        </video>
+                        <div class="heritage-text">
+                            <h3>内蒙古锡林郭勒 · 马头琴 <span class="region-tag">📍内蒙古</span></h3>
+                            <div class="subhead">“琴杆为马首，琴弦是草原”</div>
+                            <p>马头琴蒙古语称“绰尔”，因琴首雕马而得名，由唐宋拉弦乐器演变而来 。锡林郭勒盟太仆寺旗马头琴制作技艺有百余年历史，2020年列入盟级非遗。琴身木制，共鸣箱呈梯形，琴弦两束，音色深沉浑厚，擅长模仿草原风声与马鸣 。制作需经过选木、雕刻、蒙皮、调音等几十道工序，传承人刚苏和成立马头琴厂，无偿教授青少年制作技艺 。马头琴演奏常伴随长调民歌，“泛音演奏法”便是锡林郭勒草原长调的产物 。</p>
+                            <p>🎵 非遗内涵：马头琴是蒙古族灵魂的乐器，其声苍凉激昂，诉说着游牧民族的迁徙与荣耀。它不仅是音乐，更是草原文化的象征，承载着蒙古人对自然、天地的敬畏。</p>
+                        </div>
+                        <div class="heritage-image" style="background-image: url(./三创会/matouqinjinshe_5012774.jpg);"></div>
+                    </div>
+                    
+                    <!-- 蒙古族皮雕 (无视频) -->
+                    <div class="heritage-card">
+                        <div class="heritage-text">
+                            <h3>内蒙古 · 蒙古族皮雕 <span class="region-tag">📍内蒙古</span></h3>
+                            <div class="subhead">“刀锋游走，皮革上的草原史诗”</div>
+                            <p>蒙古族皮雕艺术起源于古代游牧民族对皮革的加工与装饰，现主要流传于锡林郭勒、呼伦贝尔等地。匠人以刻刀、锤子等工具在植鞣革上雕刻出浮雕图案，内容涵盖草原生活、图腾纹样、英雄史诗等。皮质经过染色、定型后，呈现出古朴而富有张力的视觉效果。2020年，蒙古族皮雕制作技艺列入内蒙古自治区级非遗名录。传承人通过皮雕画、皮雕饰品等形式，将千年游牧文化凝固于方寸皮革之间。</p>
+                            <p>🐎 非遗内涵：皮雕是蒙古族对自然与生活的艺术表达，每一道刻痕都是对草原的记忆与敬意。它融合了实用与审美，是游牧文明在当代的活态延续。</p>
+                        </div>
+                        <div class="heritage-image" style="background-image: url(./三创会/蒙古族皮雕.jpg);"></div>
+                    </div>
+                    
+                    <!-- 托克托面雕 (无视频) -->
+                    <div class="heritage-card reverse">
+                        <div class="heritage-text">
+                            <h3>内蒙古托克托 · 面雕 <span class="region-tag">📍托克托</span></h3>
+                            <div class="subhead">“指间捏塑，面里生花”</div>
+                            <p>托克托面雕是内蒙古中南部流传的民间面塑艺术，以面粉、糯米粉为原料，经和面、调色、捏塑、蒸制等工序，塑造出人物、动物、花卉等形象。其造型粗犷质朴，色彩艳丽，常用于节庆祭祀、婚丧嫁娶等民俗活动。面雕技艺在当地至少传承四代，融合了晋陕移民文化与草原游牧文化的双重基因。2018年列入呼和浩特市级非遗。传承人不仅制作传统面人，还开发出面雕装饰画、十二生肖摆件等，使这门手艺走入现代生活。</p>
+                            <p>🥟 非遗内涵：面雕是农耕与游牧文化交融的见证，寄托着人们对五谷丰登、人畜兴旺的祈愿。它既是食物，也是艺术，更是民间信仰的载体。</p>
+                        </div>
+                        <div class="heritage-image" style="background-image: url(./三创会/内蒙古托克托面塑.jpg);"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 体验项目模块 -->
+            <section id="experience-page" class="module-page">
+                <!-- 统一标题结构 -->
+                <div class="section-title">
+                    🏕️ 体验项目 · 匠心之旅
+                    <span class="section-sub">两条深度路线</span>
+                </div>
+                <div class="experience-section">
+                    <!-- 路线一：山东日照“纸间花语” - 独立标题块 -->
+                    <div class="route-title-block-shandong">
+                        <div class="title-main">
+                            山东日照 · “纸间花语” <span>2天1夜</span>
+                        </div>
+                        <div class="badge">中外青年 1:1 组队</div>
+                    </div>
+                    <!-- 内容卡片（山东风格） -->
+                    <div class="route-content-shandong">
+                        <!-- 插入日照地图带标记 -->
+                        <div class="map-frame">
+                            <img src="./三创会/日照市地图.gif" alt="日照地图" class="map-image">
+                            <!-- 标记① 莒县 · 过门笺/缠花 -->
+                            <div class="marker" style="top: 46%; left: 30%;">
+                                <div class="marker-num">①</div>
+                            </div>
+                            <div class="guide-dot" style="top: 46%; left: 30%;"></div>
+                            <!-- 标记② 东港区 · 刘氏盘扣 -->
+                            <div class="marker" style="top: 50%; left: 65%;">
+                                <div class="marker-num">②</div>
+                            </div>
+                            <div class="guide-dot" style="top: 50%; left: 65%;"></div>
+                        </div>
+
+                        <div class="core-tag">
+                            <span class="core-item">📄 过门笺</span>
+                            <span class="core-item">🌸 缠花</span>
+                            <span class="core-item">🧵 刘氏盘扣</span>
+                        </div>
+                        <div class="map-mini-hint">
+                            <span>📍 对应地图标记：①莒县(过门笺/缠花)  ②东港区(刘氏盘扣)</span>
+                        </div>
+
+                        <!-- 行程两天 -->
+                        <div class="itin-grid">
+                            <div class="day-block">
+                                <h4>第一天</h4>
+                                <ul>
+                                    <li>上午：抵达日照，参观日照市非遗馆</li>
+                                    <li>中午：品尝莒县全羊汤、莒县煎饼</li>
+                                    <li>下午：莒国古城“剪纸物语”工坊 · 过门笺体验（3小时，省级传承人于红老师指导）</li>
+                                    <li>傍晚：游览莒国古城夜景，欣赏灯光秀</li>
+                                    <li>晚上：入住古城特色民宿</li>
+                                </ul>
+                            </div>
+                            <div class="day-block">
+                                <h4>第二天</h4>
+                                <ul>
+                                    <li>上午：缠花技艺体验工作坊（制作可带走的缠花饰品）</li>
+                                    <li>中午：非遗主题午餐（日照黑陶盛装）</li>
+                                    <li>下午：刘氏盘扣体验 + W/E作品交换仪式</li>
+                                    <li>傍晚：返程</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 特色互动环节 -->
+                        <div class="interact-box">
+                            <h5>🎯 特色互动环节 · 跨文化交友</h5>
+                            <div class="interact-items">
+                                <div class="interact-item"><strong>定制主题过门笺</strong> 根据生肖/家乡元素设计专属图案</div>
+                                <div class="interact-item"><strong>“剪影寻踪”古城探秘</strong> 手持局部图案寻找对应建筑</div>
+                                <div class="interact-item"><strong>盘扣茶席</strong> 用自制盘扣装饰茶席，品鉴日照绿茶</div>
+                            </div>
+                        </div>
+
+                        <!-- 底部元信息 + 数字化资产 -->
+                        <div class="meta-footer">
+                            <div class="meta-tag">📅 全年（春秋最佳）</div>
+                            <div class="digital-assets"><span>📸 专属作品数字证书</span> <span>🎬 创作短视频</span> <span>📱 社交媒体素材包</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 路线二：内蒙古“马背弦歌” - 独立标题块 -->
+                    <div class="route-title-block-mongolia" style="margin-top: 60px;">
+                        <div class="title-main">
+                            内蒙古 · “马背弦歌” <span>3天2夜</span>
+                        </div>
+                        <div class="badge">草原星空 · 盲盒交友</div>
+                    </div>
+                    <!-- 内容卡片（内蒙古风格） -->
+                    <div class="route-content-mongolia">
+                        <!-- 插入内蒙古地图带标记 -->
+                        <div class="map-frame">
+                            <img src="./三创会/内蒙古地图.jpg" alt="内蒙古地图" class="map-image">
+                            <!-- 标记① 锡林郭勒 · 马头琴/皮雕 -->
+                            <div class="marker" style="top: 60%; left: 60%;">
+                                <div class="marker-num mongolia">①</div>
+                            </div>
+                            <div class="guide-dot" style="top: 60%; left: 60%;"></div>
+                            <!-- 标记② 托克托 · 面雕 -->
+                            <div class="marker" style="top: 72%; left: 33%;">
+                                <div class="marker-num mongolia">②</div>
+                            </div>
+                            <div class="guide-dot" style="top: 72%; left: 33%;"></div>
+                            <!-- 标记③ 赤峰 · 皮雕 -->
+                            <div class="marker" style="top: 48%; left: 73%;">
+                                <div class="marker-num mongolia">③</div>
+                            </div>
+                            <div class="guide-dot" style="top: 48%; left: 73%;"></div>
+                        </div>
+
+                        <div class="core-tag">
+                            <span class="core-item mongolia">🎻 马头琴</span>
+                            <span class="core-item mongolia">🐂 蒙古族皮雕</span>
+                            <span class="core-item mongolia">🥟 托克托面塑</span>
+                        </div>
+                        <div class="map-mini-hint">
+                            <span>📍 对应地图标记：①锡林郭勒(马头琴/皮雕) ②托克托(面雕) ③赤峰(皮雕)</span>
+                        </div>
+
+                        <div class="itin-grid">
+                            <div class="day-block">
+                                <h4 class="mongolia">第一天</h4>
+                                <ul>
+                                    <li>上午：抵达呼和浩特，前往莫尼山非遗小镇</li>
+                                    <li>中午：手把肉、奶茶、奶豆腐</li>
+                                    <li>下午：参观马头琴博物馆</li>
+                                    <li>晚上：观看《我的故乡在北疆》实景剧</li>
+                                    <li>住宿：草原特色蒙古包</li>
+                                </ul>
+                            </div>
+                            <div class="day-block">
+                                <h4 class="mongolia">第二天</h4>
+                                <ul>
+                                    <li>上午：正蓝旗金莲川草原、元上都遗址</li>
+                                    <li>中午：蒙古族传统茶点</li>
+                                    <li>下午：马头琴演奏家面对面，学习基础技法</li>
+                                    <li>晚上：草原星空音乐会 · 即兴合奏</li>
+                                    <li>住宿：正蓝旗特色民宿</li>
+                                </ul>
+                            </div>
+                            <div class="day-block">
+                                <h4 class="mongolia">第三天</h4>
+                                <ul>
+                                    <li>上午：皮雕技艺体验工作坊</li>
+                                    <li>中午：托克托面塑体验（草原动物造型）</li>
+                                    <li>下午：W/E作品交换仪式 + 分享心得</li>
+                                    <li>傍晚：返程</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 特色互动环节（内蒙古） -->
+                        <div class="interact-box mongolia">
+                            <h5>🎯 草原限定 · 互动体验</h5>
+                            <div class="interact-items">
+                                <div class="interact-item mongolia"><strong>马头琴的故事</strong> 学一段旋律，在日落时集体演奏并录制短视频</div>
+                                <div class="interact-item mongolia"><strong>皮雕交换盲盒</strong> 匿名包装作品，随机抽取并猜测文化解读</div>
+                                <div class="interact-item mongolia"><strong>那达慕体验</strong> 骑马、射箭、博克（按季节安排）</div>
+                            </div>
+                        </div>
+
+                        <div class="meta-footer">
+                            <div class="meta-tag">📅 5月-10月</div>
+                            <div class="digital-assets"><span>🏆 专属作品数字证书</span> <span>🎥 星空合奏短视频</span> <span>📸 游牧素材包</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WE墙社区模块 -->
+            <section id="we-wall-page" class="module-page">
+                <div class="section-title">
+                    🧱 WE墙社区 · 作品漂流
+                    <span class="section-sub">138件作品漂流</span>
+                </div>
+                <div class="placeholder-module">
+                    <h3>🧱 WE墙社区 · 作品漂流</h3>
+                    <p>放下作品 · 留下联系方式 · 带走另一件作品 · 结交外国朋友</p>
+                    <p style="margin-top: 15px;">✨ 已有138件作品在漂流 ✨</p>
+                </div>
+            </section>
+
+            <!-- 文创商城模块 (已重新设计) -->
+            <section id="mall-page" class="module-page active">
+                <div class="section-title">
+                    🛍️ 文创商城 · 匠心好物
+                    <span class="section-sub">非遗文创·可带走的文化</span>
+                </div>
+                <div class="mall-grid">
+                    <!-- 商品1：五张过门笺套装 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                             <img src="./三创会/wenchuang1.jpg" alt="过门笺五福套装" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
+                        </div>
+                        <h3 class="product-title">过门笺 · 五福套装</h3>
+                        <div class="product-desc">五张手工刻纸过门笺，寓意五福临门。含传统图案“富贵不断头”“八宝”等，可装裱或张贴。</div>
+                        <div class="product-meta">
+                            <span class="product-price">¥30</span>
+                            <span class="product-tag">山东日照</span>
+                        </div>
+                    </div>
+
+                    <!-- 商品2：剪纸材料包 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                             <img src="./三创会/wenchuang2.jpg" alt="剪纸材料包入门套装" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
+                        </div>
+                        <h3 class="product-title">剪纸材料包 · 入门套装</h3>
+                        <div class="product-desc">工具+红纸+底稿，含刻刀、蜡盘、样稿。零基础体验过门笺刻纸技艺，亲手制作专属作品。</div>
+                        <div class="product-meta">
+                            <span class="product-price">¥49</span>
+                            <span class="product-tag">工具齐全</span>
+                        </div>
+                    </div>
+
+                    <!-- 商品3：马头琴冰箱贴 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                             <img src="./三创会/wenchuang3.jpg" alt="马头琴草原冰箱贴" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
+                        </div>
+                        <h3 class="product-title">马头琴 · 草原冰箱贴</h3>
+                        <div class="product-desc">DesignByAriRise 原创设计，精致马头琴造型冰箱贴，金属烤漆，磁力强。草原文化随身带。</div>
+                        <div class="product-meta">
+                            <span class="product-price">¥45</span>
+                            <span class="product-tag">内蒙古</span>
+                        </div>
+                    </div>
+
+                    <!-- 商品4：缠花DIY饰品套装 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                             <img src="./三创会/wenchuang4.jpg" alt="缠花DIY国风视频套装" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
+                        </div>
+                        <h3 class="product-title">缠花DIY · 国风饰品套装</h3>
+                        <div class="product-desc">包含缠花线、铜丝、木簪、胸针配件、剪刀、胶水等。可制作发簪/胸针，感受指尖缠绕之美。</div>
+                        <div class="product-meta">
+                            <span class="product-price">¥69.9</span>
+                            <span class="product-tag">全套材料</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mall-footer-note">
+                    🌟 所有文创收益均用于支持非遗传承人 & 乡村振兴 🌟
+                </div>
+            </section>
+
+            <!-- 关于我们模块（原合作共建已删除） -->
+            <section id="about-page" class="module-page">
+                <div class="section-title">
+                    📖 关于我们 · 非遗传承
+                    <span class="section-sub">了解我们</span>
+                </div>
+                <div class="placeholder-module">
+                    <h3>📖 关于我们</h3>
+                    <p>非遗洋探客 · 中外青年共创 · 乡村活化 · 文化传承</p>
+                    <p style="margin-top: 20px;">让非遗跨越山海，成为世界青年交流的桥梁。</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+                <div>
+                    <div style="font-size: 24px; font-weight: 900; color: var(--primary-red);">非遗洋探客</div>
+                    <p style="margin: 15px 0; max-width: 350px;">中外青年共创 · 乡村活化 · 文化传承</p>
+                    <p style="color: #767676;">© 2026 非遗洋探客 ｜ 让非遗成为世界语言</p>
+                </div>
+                <div style="display: flex; gap: 50px; flex-wrap: wrap;">
+                    <div><strong>探索</strong><br>发现非遗<br>体验项目<br>文创商城</div>
+                    <div><strong>社区</strong><br>WE墙社区<br>关于我们</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function switchModule(moduleName) {
+            document.querySelectorAll('.module-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            const activePage = document.getElementById(moduleName + '-page');
+            if (activePage) activePage.classList.add('active');
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-module') === moduleName) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const module = this.getAttribute('data-module');
+                switchModule(module);
+            });
+        });
+
+        // 视频滚动自动暂停
+        document.addEventListener('DOMContentLoaded', function() {
+            if ('IntersectionObserver' in window) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            const video = entry.target;
+                            if (!video.paused) {
+                                video.pause();
+                            }
+                        }
+                    });
+                }, { threshold: 0 });
+                document.querySelectorAll('video').forEach(video => {
+                    videoObserver.observe(video);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
