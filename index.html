@@ -75,7 +75,6 @@
             gap: 32px;
             font-weight: 500;
             flex-wrap: wrap;
-            /* 让导航链接整体向右移动，实现“合作模块左边的模块右移”效果 */
             margin-left: auto;
         }
         .nav-links a {
@@ -94,7 +93,7 @@
             border-bottom: 2px solid var(--primary-red);
         }
         
-        /* ===== 五张照片固定层（左二 中一 右二） ===== */
+        /* ===== 五张照片固定层 ===== */
         .five-photos-fixed {
             position: relative;
             width: 100%;
@@ -129,14 +128,12 @@
             position: relative;
             border: 1px solid rgba(255,255,255,0.2);
             background-color: #ddcfb2;
-            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%);
         }
         .photo-item:hover {
             transform: scale(1.01);
             z-index: 5;
             box-shadow: 0 0 15px rgba(0,0,0,0.3);
         }
-        /* 覆盖文字 */
         .overlay-text {
             position: absolute;
             top: 50%;
@@ -162,7 +159,6 @@
             }
         }
         
-        /* 主要内容区域 */
         .main-content {
             position: relative;
             z-index: 1;
@@ -176,7 +172,6 @@
             display: block;
         }
         
-        /* 统一标题样式（红杠 + 主标题 + 副标题） */
         .section-title {
             font-size: 38px;
             font-weight: 900;
@@ -215,7 +210,7 @@
             border: 1px solid var(--border-light);
             align-items: center;
             transition: transform 0.2s, box-shadow 0.2s;
-            flex-wrap: wrap; /* 允许子项换行，用于放置视频占位 */
+            flex-wrap: wrap;
         }
         .heritage-card:hover {
             transform: translateY(-5px);
@@ -224,7 +219,6 @@
         .heritage-card.reverse {
             flex-direction: row-reverse;
         }
-        /* 视频样式 */
         video {
             width: 100%;
             border-radius: 24px;
@@ -252,7 +246,6 @@
             padding: 4px 12px;
             border-radius: 30px;
             font-weight: 500;
-            letter-spacing: 0.5px;
         }
         .heritage-text .subhead {
             font-size: 20px;
@@ -276,16 +269,11 @@
             background-position: center;
             box-shadow: 12px 12px 0 var(--primary-blue);
             border: 2px solid #333;
-            background-color: #e0d6c8;
-            background-image: linear-gradient(45deg, #b0a28f 25%, transparent 25%);
             transition: box-shadow 0.2s;
             min-width: 250px;
         }
-        .heritage-card:hover .heritage-image {
-            box-shadow: 8px 8px 0 var(--primary-red);
-        }
         
-        /* ========== 地图标记样式 ========== */
+        /* 地图样式 */
         .map-frame {
             position: relative;
             width: 100%;
@@ -301,13 +289,11 @@
             width: 100%;
             height: auto;
             pointer-events: none;
-            background-color: #cfc6b6;
         }
         .marker {
             position: absolute;
             transform: translate(-50%, -50%);
             z-index: 30;
-            filter: drop-shadow(0 4px 6px black);
         }
         .marker-num {
             width: 42px;
@@ -330,29 +316,21 @@
             position: absolute;
             width: 8px;
             height: 8px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255,255,255,0.8);
             border: 2px solid black;
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            z-index: 20;
             pointer-events: none;
         }
         
-        /* ========== 体验项目模块专用样式 ========== */
+        /* 体验项目模块样式 */
         .experience-section {
             margin: 0 0 40px 0;
         }
-
-        /* 路线卡片通用 */
-        .route-card {
-            margin-bottom: 70px;
-        }
-
-        /* 独立标题条 - 山东风格（红色系） */
         .route-title-block-shandong {
             background: linear-gradient(145deg, #C3272B 0%, #a01e22 100%);
             padding: 25px 35px;
-            border-radius: 60px 60px 60px 60px;
+            border-radius: 60px;
             margin-bottom: 25px;
             box-shadow: 0 15px 25px rgba(195,39,43,0.3);
             border: 2px solid white;
@@ -365,20 +343,9 @@
             position: relative;
             overflow: hidden;
         }
-        .route-title-block-shandong::after {
-            content: "🏮";
-            font-size: 80px;
-            position: absolute;
-            right: 20px;
-            bottom: -10px;
-            opacity: 0.15;
-            transform: rotate(10deg);
-        }
         .route-title-block-shandong .title-main {
             font-size: 42px;
             font-weight: 900;
-            letter-spacing: 2px;
-            line-height: 1.2;
         }
         .route-title-block-shandong .title-main span {
             font-size: 24px;
@@ -395,14 +362,11 @@
             padding: 10px 25px;
             border-radius: 50px;
             font-size: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-
-        /* 独立标题条 - 内蒙古风格（绿色系） */
         .route-title-block-mongolia {
             background: linear-gradient(145deg, #1d754b 0%, #145a39 100%);
             padding: 25px 35px;
-            border-radius: 60px 60px 60px 60px;
+            border-radius: 60px;
             margin-bottom: 25px;
             box-shadow: 0 15px 25px rgba(29,117,75,0.3);
             border: 2px solid #F8F51F;
@@ -412,23 +376,10 @@
             flex-wrap: wrap;
             gap: 20px;
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .route-title-block-mongolia::after {
-            content: "🐎";
-            font-size: 80px;
-            position: absolute;
-            right: 20px;
-            bottom: -10px;
-            opacity: 0.15;
-            transform: rotate(-5deg);
         }
         .route-title-block-mongolia .title-main {
             font-size: 42px;
             font-weight: 900;
-            letter-spacing: 2px;
-            line-height: 1.2;
         }
         .route-title-block-mongolia .title-main span {
             font-size: 24px;
@@ -445,27 +396,16 @@
             padding: 10px 25px;
             border-radius: 50px;
             font-size: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-
-        /* 卡片内容区域 - 山东风格 */
-        .route-content-shandong {
+        .route-content-shandong, .route-content-mongolia {
             background: #fcfcfc;
             border-radius: 50px;
             padding: 40px;
             border: 2px solid #C3272B;
-            box-shadow: 0 20px 35px rgba(195,39,43,0.08);
         }
-
-        /* 卡片内容区域 - 内蒙古风格 */
         .route-content-mongolia {
-            background: #fcfcfc;
-            border-radius: 50px;
-            padding: 40px;
             border: 2px solid #1d754b;
-            box-shadow: 0 20px 35px rgba(29,117,75,0.08);
         }
-
         .core-tag {
             display: flex;
             flex-wrap: wrap;
@@ -505,19 +445,6 @@
             padding-bottom: 8px;
             margin-bottom: 15px;
         }
-        .day-block.mongolia h4 {
-            color: #1d754b;
-        }
-        .day-block ul {
-            list-style: none;
-        }
-        .day-block li {
-            margin-bottom: 14px;
-            padding-left: 28px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%232A5A8C"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;
-            background-size: 18px;
-            color: #2e2e2e;
-        }
         .interact-box {
             background: #eef3f9;
             border-radius: 40px;
@@ -529,14 +456,6 @@
             border-left: 10px solid #1d754b;
             background: #e2f0e8;
         }
-        .interact-box h5 {
-            font-size: 26px;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
         .interact-items {
             display: flex;
             flex-wrap: wrap;
@@ -547,17 +466,12 @@
             background: white;
             border-radius: 30px;
             padding: 20px;
-            font-weight: 500;
-            box-shadow: 0 8px 12px rgba(0,0,0,0.04);
         }
         .interact-item strong {
             color: var(--primary-red);
             font-size: 20px;
             display: block;
             margin-bottom: 8px;
-        }
-        .interact-item.mongolia strong {
-            color: #1d754b;
         }
         .meta-footer {
             display: flex;
@@ -581,11 +495,9 @@
             padding: 15px 30px;
             border-radius: 60px;
             font-size: 16px;
-            font-weight: 500;
         }
         .digital-assets span {
             color: var(--accent-yellow);
-            margin: 0 5px;
         }
         .map-mini-hint {
             display: flex;
@@ -596,11 +508,8 @@
             margin-top: 10px;
             margin-bottom: 15px;
         }
-        .map-mini-hint img {
-            height: 30px;
-            border-radius: 8px;
-        }
-        /* ========== 文创商城模块样式 ========== */
+        
+        /* 文创商城样式 */
         .mall-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -610,43 +519,27 @@
         .product-card {
             background: white;
             border-radius: 40px;
-            padding: 25px 20px 25px 20px;
+            padding: 25px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.06);
             border: 2px solid #f0e8dd;
             transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
         }
         .product-card:hover {
             border-color: var(--primary-red);
             transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(195,39,43,0.1);
         }
         .product-image {
             width: 100%;
             aspect-ratio: 1 / 1;
             background-color: #e8e0d5;
-            background-image: linear-gradient(45deg, #d2c8b9 25%, transparent 25%);
             border-radius: 32px;
             margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9a8f7e;
-            font-size: 18px;
-            font-weight: 500;
-            border: 2px dashed var(--primary-blue);
-            background-size: 20px 20px;
-            position: relative;
             overflow: hidden;
         }
-        .product-image span {
-            background: rgba(255,255,255,0.7);
-            padding: 6px 15px;
-            border-radius: 60px;
-            backdrop-filter: blur(2px);
-            color: #1e1e1e;
-            border: 1px solid var(--primary-red);
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .product-title {
             font-size: 26px;
@@ -659,7 +552,6 @@
             color: #4a4a4a;
             margin-bottom: 15px;
             line-height: 1.5;
-            flex: 1;
         }
         .product-meta {
             display: flex;
@@ -667,7 +559,6 @@
             align-items: center;
             border-top: 1px dashed #ccc;
             padding-top: 15px;
-            margin-top: 5px;
         }
         .product-price {
             font-size: 24px;
@@ -676,29 +567,16 @@
         }
         .product-tag {
             background: var(--accent-yellow);
-            color: #1e1e1e;
-            font-weight: 700;
             padding: 5px 16px;
             border-radius: 40px;
             font-size: 14px;
         }
-        .mall-footer-note {
-            text-align: center;
-            background: #f3efe9;
-            padding: 30px;
-            border-radius: 60px;
-            margin-top: 30px;
-            color: var(--primary-blue);
-            font-size: 20px;
-            font-weight: 500;
-        }
-        /* 空白模块样式 (备用) */
         .placeholder-module {
             padding: 60px 0;
             text-align: center;
             background: var(--light-bg);
             border-radius: 60px;
-            margin: 0 0 40px 0;
+            margin: 0 0 40px;
             color: #888;
             font-size: 24px;
             border: 2px dashed #ccc;
@@ -708,11 +586,167 @@
             justify-content: center;
         }
         
+        /* ========== 关于我们模块 · 团队介绍样式 ========== */
+        .team-category-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin: 40px 0 25px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-yellow);
+            display: inline-block;
+        }
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin: 20px 0 20px;
+        }
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin: 20px 0 40px;
+        }
+        .member-card {
+            background: #ffffff;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #f0e8dd;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(195,39,43,0.12);
+            border-color: var(--primary-red);
+        }
+        .member-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #f5f0ea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 3px solid var(--primary-red);
+        }
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f5f0ea;
+            display: block;
+        }
+        .member-photo .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e2dcd2 0%, #cdc2b2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #8b7a66;
+            font-size: 48px;
+        }
+        .member-photo .photo-placeholder span {
+            font-size: 14px;
+            margin-top: 8px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+        }
+        .member-info {
+            padding: 24px 22px 28px;
+            flex: 1;
+        }
+        .member-name {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary-blue);
+            line-height: 1.2;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .member-role {
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--primary-red);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+            display: inline-block;
+        }
+        .member-role.mentor {
+            background: #1d754b;
+        }
+        .member-school {
+            font-size: 15px;
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin: 8px 0 12px;
+            border-left: 3px solid var(--accent-yellow);
+            padding-left: 12px;
+        }
+        .member-desc {
+            font-size: 15px;
+            line-height: 1.55;
+            color: #3a3a3a;
+            margin-bottom: 16px;
+        }
+        .member-detail {
+            font-size: 14px;
+            color: #5a5a5a;
+            border-top: 1px dashed #e0d6ca;
+            padding-top: 14px;
+            margin-top: 8px;
+        }
+        .member-detail strong {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+        .team-quote {
+            text-align: center;
+            background: var(--light-bg);
+            border-radius: 60px;
+            padding: 30px;
+            margin: 40px 0 20px;
+            font-size: 18px;
+            color: var(--primary-blue);
+            border: 1px solid #e2d9cf;
+        }
+        @media (max-width: 900px) {
+            .students-grid, .teacher-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .students-grid, .teacher-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         footer {
             border-top: 3px solid var(--primary-red);
             margin-top: 50px;
             padding: 40px 0;
             background-color: #faf8f6;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 0 20px;
+            }
+            .member-name {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -726,11 +760,10 @@
                 <div class="chinese-youth-badge">中国青年</div>
             </div>
             <div class="nav-links">
-                <a data-module="discover">发现非遗</a>
+                <a data-module="discover" class="active">发现非遗</a>
                 <a data-module="experience">体验项目</a>
                 <a data-module="we-wall">WE墙社区</a>
                 <a data-module="mall">文创商城</a>
-                <!-- 合作共建模块已删除 -->
                 <a data-module="about">关于我们</a>
             </div>
         </nav>
@@ -757,10 +790,9 @@
     <!-- 主要内容区域 -->
     <div class="main-content">
         <div class="container">
-            <!-- 发现非遗模块 (已添加三个视频) -->
-            <section id="discover-page" class="module-page">
+            <!-- 发现非遗模块 (默认显示) -->
+            <section id="discover-page" class="module-page active">
                 <div class="discover-section">
-                    <!-- 统一标题结构 -->
                     <div class="section-title">
                         🌾 发现非遗 · 繁星点点
                         <span class="section-sub">现已收录6项传统技艺</span>
@@ -768,7 +800,6 @@
                     
                     <!-- 山东日照过门笺 -->
                     <div class="heritage-card">
-                        <!-- 过门笺视频 -->
                         <video controls preload="metadata">
                             <source src="./三创会/guomenjian.mp4" type="video/mp4">
                             您的浏览器不支持视频播放。
@@ -784,7 +815,6 @@
                     
                     <!-- 山东日照缠花 -->
                     <div class="heritage-card reverse">
-                        <!-- 缠花视频 -->
                         <video controls preload="metadata">
                             <source src="./三创会/chanhua.mp4" type="video/mp4">
                             您的浏览器不支持视频播放。
@@ -798,7 +828,7 @@
                         <div class="heritage-image" style="background-image: url(./三创会/574ebd3185a740ab977e6560ab515d39.jpeg);"></div>
                     </div>
                     
-                    <!-- 山东日照刘氏盘扣 (无视频) -->
+                    <!-- 山东日照刘氏盘扣 -->
                     <div class="heritage-card">
                         <div class="heritage-text">
                             <h3>山东日照 · 刘氏盘扣 <span class="region-tag">📍日照</span></h3>
@@ -811,7 +841,6 @@
                     
                     <!-- 内蒙古锡林郭勒马头琴 -->
                     <div class="heritage-card reverse">
-                        <!-- 马头琴视频 -->
                         <video controls preload="metadata">
                             <source src="./三创会/matouqin.mp4" type="video/mp4">
                             您的浏览器不支持视频播放。
@@ -825,7 +854,7 @@
                         <div class="heritage-image" style="background-image: url(./三创会/matouqinjinshe_5012774.jpg);"></div>
                     </div>
                     
-                    <!-- 蒙古族皮雕 (无视频) -->
+                    <!-- 蒙古族皮雕 -->
                     <div class="heritage-card">
                         <div class="heritage-text">
                             <h3>内蒙古 · 蒙古族皮雕 <span class="region-tag">📍内蒙古</span></h3>
@@ -836,7 +865,7 @@
                         <div class="heritage-image" style="background-image: url(./三创会/蒙古族皮雕.jpg);"></div>
                     </div>
                     
-                    <!-- 托克托面雕 (无视频) -->
+                    <!-- 托克托面雕 -->
                     <div class="heritage-card reverse">
                         <div class="heritage-text">
                             <h3>内蒙古托克托 · 面雕 <span class="region-tag">📍托克托</span></h3>
@@ -851,169 +880,44 @@
 
             <!-- 体验项目模块 -->
             <section id="experience-page" class="module-page">
-                <!-- 统一标题结构 -->
                 <div class="section-title">
                     🏕️ 体验项目 · 匠心之旅
                     <span class="section-sub">两条深度路线</span>
                 </div>
                 <div class="experience-section">
-                    <!-- 路线一：山东日照“纸间花语” - 独立标题块 -->
                     <div class="route-title-block-shandong">
-                        <div class="title-main">
-                            山东日照 · “纸间花语” <span>2天1夜</span>
-                        </div>
+                        <div class="title-main">山东日照 · “纸间花语” <span>2天1夜</span></div>
                         <div class="badge">中外青年 1:1 组队</div>
                     </div>
-                    <!-- 内容卡片（山东风格） -->
                     <div class="route-content-shandong">
-                        <!-- 插入日照地图带标记 -->
                         <div class="map-frame">
                             <img src="./三创会/日照市地图.gif" alt="日照地图" class="map-image">
-                            <!-- 标记① 莒县 · 过门笺/缠花 -->
-                            <div class="marker" style="top: 46%; left: 30%;">
-                                <div class="marker-num">①</div>
-                            </div>
-                            <div class="guide-dot" style="top: 46%; left: 30%;"></div>
-                            <!-- 标记② 东港区 · 刘氏盘扣 -->
-                            <div class="marker" style="top: 50%; left: 65%;">
-                                <div class="marker-num">②</div>
-                            </div>
-                            <div class="guide-dot" style="top: 50%; left: 65%;"></div>
+                            <div class="marker" style="top: 46%; left: 30%;"><div class="marker-num">①</div></div>
+                            <div class="marker" style="top: 50%; left: 65%;"><div class="marker-num">②</div></div>
                         </div>
-
                         <div class="core-tag">
                             <span class="core-item">📄 过门笺</span>
                             <span class="core-item">🌸 缠花</span>
                             <span class="core-item">🧵 刘氏盘扣</span>
                         </div>
-                        <div class="map-mini-hint">
-                            <span>📍 对应地图标记：①莒县(过门笺/缠花)  ②东港区(刘氏盘扣)</span>
-                        </div>
-
-                        <!-- 行程两天 -->
                         <div class="itin-grid">
-                            <div class="day-block">
-                                <h4>第一天</h4>
-                                <ul>
-                                    <li>上午：抵达日照，参观日照市非遗馆</li>
-                                    <li>中午：品尝莒县全羊汤、莒县煎饼</li>
-                                    <li>下午：莒国古城“剪纸物语”工坊 · 过门笺体验（3小时，省级传承人于红老师指导）</li>
-                                    <li>傍晚：游览莒国古城夜景，欣赏灯光秀</li>
-                                    <li>晚上：入住古城特色民宿</li>
-                                </ul>
-                            </div>
-                            <div class="day-block">
-                                <h4>第二天</h4>
-                                <ul>
-                                    <li>上午：缠花技艺体验工作坊（制作可带走的缠花饰品）</li>
-                                    <li>中午：非遗主题午餐（日照黑陶盛装）</li>
-                                    <li>下午：刘氏盘扣体验 + W/E作品交换仪式</li>
-                                    <li>傍晚：返程</li>
-                                </ul>
-                            </div>
+                            <div class="day-block"><h4>第一天</h4><ul><li>上午：抵达日照，参观日照市非遗馆</li><li>中午：品尝莒县全羊汤、莒县煎饼</li><li>下午：莒国古城“剪纸物语”工坊 · 过门笺体验（3小时，省级传承人于红老师指导）</li><li>傍晚：游览莒国古城夜景，欣赏灯光秀</li><li>晚上：入住古城特色民宿</li></ul></div>
+                            <div class="day-block"><h4>第二天</h4><ul><li>上午：缠花技艺体验工作坊（制作可带走的缠花饰品）</li><li>中午：非遗主题午餐（日照黑陶盛装）</li><li>下午：刘氏盘扣体验 + W/E作品交换仪式</li><li>傍晚：返程</li></ul></div>
                         </div>
-
-                        <!-- 特色互动环节 -->
-                        <div class="interact-box">
-                            <h5>🎯 特色互动环节 · 跨文化交友</h5>
-                            <div class="interact-items">
-                                <div class="interact-item"><strong>定制主题过门笺</strong> 根据生肖/家乡元素设计专属图案</div>
-                                <div class="interact-item"><strong>“剪影寻踪”古城探秘</strong> 手持局部图案寻找对应建筑</div>
-                                <div class="interact-item"><strong>盘扣茶席</strong> 用自制盘扣装饰茶席，品鉴日照绿茶</div>
-                            </div>
-                        </div>
-
-                        <!-- 底部元信息 + 数字化资产 -->
-                        <div class="meta-footer">
-                            <div class="meta-tag">📅 全年（春秋最佳）</div>
-                            <div class="digital-assets"><span>📸 专属作品数字证书</span> <span>🎬 创作短视频</span> <span>📱 社交媒体素材包</span></div>
-                        </div>
+                        <div class="interact-box"><h5>🎯 特色互动环节 · 跨文化交友</h5><div class="interact-items"><div class="interact-item"><strong>定制主题过门笺</strong> 根据生肖/家乡元素设计专属图案</div><div class="interact-item"><strong>“剪影寻踪”古城探秘</strong> 手持局部图案寻找对应建筑</div><div class="interact-item"><strong>盘扣茶席</strong> 用自制盘扣装饰茶席，品鉴日照绿茶</div></div></div>
+                        <div class="meta-footer"><div class="meta-tag">📅 全年（春秋最佳）</div><div class="digital-assets"><span>📸 专属作品数字证书</span> <span>🎬 创作短视频</span> <span>📱 社交媒体素材包</span></div></div>
                     </div>
-
-                    <!-- 路线二：内蒙古“马背弦歌” - 独立标题块 -->
+                    
                     <div class="route-title-block-mongolia" style="margin-top: 60px;">
-                        <div class="title-main">
-                            内蒙古 · “马背弦歌” <span>3天2夜</span>
-                        </div>
+                        <div class="title-main">内蒙古 · “马背弦歌” <span>3天2夜</span></div>
                         <div class="badge">草原星空 · 盲盒交友</div>
                     </div>
-                    <!-- 内容卡片（内蒙古风格） -->
                     <div class="route-content-mongolia">
-                        <!-- 插入内蒙古地图带标记 -->
-                        <div class="map-frame">
-                            <img src="./三创会/内蒙古地图.jpg" alt="内蒙古地图" class="map-image">
-                            <!-- 标记① 锡林郭勒 · 马头琴/皮雕 -->
-                            <div class="marker" style="top: 60%; left: 60%;">
-                                <div class="marker-num mongolia">①</div>
-                            </div>
-                            <div class="guide-dot" style="top: 60%; left: 60%;"></div>
-                            <!-- 标记② 托克托 · 面雕 -->
-                            <div class="marker" style="top: 72%; left: 33%;">
-                                <div class="marker-num mongolia">②</div>
-                            </div>
-                            <div class="guide-dot" style="top: 72%; left: 33%;"></div>
-                            <!-- 标记③ 赤峰 · 皮雕 -->
-                            <div class="marker" style="top: 48%; left: 73%;">
-                                <div class="marker-num mongolia">③</div>
-                            </div>
-                            <div class="guide-dot" style="top: 48%; left: 73%;"></div>
-                        </div>
-
-                        <div class="core-tag">
-                            <span class="core-item mongolia">🎻 马头琴</span>
-                            <span class="core-item mongolia">🐂 蒙古族皮雕</span>
-                            <span class="core-item mongolia">🥟 托克托面塑</span>
-                        </div>
-                        <div class="map-mini-hint">
-                            <span>📍 对应地图标记：①锡林郭勒(马头琴/皮雕) ②托克托(面雕) ③赤峰(皮雕)</span>
-                        </div>
-
-                        <div class="itin-grid">
-                            <div class="day-block">
-                                <h4 class="mongolia">第一天</h4>
-                                <ul>
-                                    <li>上午：抵达呼和浩特，前往莫尼山非遗小镇</li>
-                                    <li>中午：手把肉、奶茶、奶豆腐</li>
-                                    <li>下午：参观马头琴博物馆</li>
-                                    <li>晚上：观看《我的故乡在北疆》实景剧</li>
-                                    <li>住宿：草原特色蒙古包</li>
-                                </ul>
-                            </div>
-                            <div class="day-block">
-                                <h4 class="mongolia">第二天</h4>
-                                <ul>
-                                    <li>上午：正蓝旗金莲川草原、元上都遗址</li>
-                                    <li>中午：蒙古族传统茶点</li>
-                                    <li>下午：马头琴演奏家面对面，学习基础技法</li>
-                                    <li>晚上：草原星空音乐会 · 即兴合奏</li>
-                                    <li>住宿：正蓝旗特色民宿</li>
-                                </ul>
-                            </div>
-                            <div class="day-block">
-                                <h4 class="mongolia">第三天</h4>
-                                <ul>
-                                    <li>上午：皮雕技艺体验工作坊</li>
-                                    <li>中午：托克托面塑体验（草原动物造型）</li>
-                                    <li>下午：W/E作品交换仪式 + 分享心得</li>
-                                    <li>傍晚：返程</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- 特色互动环节（内蒙古） -->
-                        <div class="interact-box mongolia">
-                            <h5>🎯 草原限定 · 互动体验</h5>
-                            <div class="interact-items">
-                                <div class="interact-item mongolia"><strong>马头琴的故事</strong> 学一段旋律，在日落时集体演奏并录制短视频</div>
-                                <div class="interact-item mongolia"><strong>皮雕交换盲盒</strong> 匿名包装作品，随机抽取并猜测文化解读</div>
-                                <div class="interact-item mongolia"><strong>那达慕体验</strong> 骑马、射箭、博克（按季节安排）</div>
-                            </div>
-                        </div>
-
-                        <div class="meta-footer">
-                            <div class="meta-tag">📅 5月-10月</div>
-                            <div class="digital-assets"><span>🏆 专属作品数字证书</span> <span>🎥 星空合奏短视频</span> <span>📸 游牧素材包</span></div>
-                        </div>
+                        <div class="map-frame"><img src="./三创会/内蒙古地图.jpg" class="map-image"></div>
+                        <div class="core-tag"><span class="core-item mongolia">🎻 马头琴</span><span class="core-item mongolia">🐂 蒙古族皮雕</span><span class="core-item mongolia">🥟 托克托面塑</span></div>
+                        <div class="itin-grid"><div class="day-block"><h4>第一天</h4><ul><li>上午：抵达呼和浩特，前往莫尼山非遗小镇</li><li>中午：手把肉、奶茶、奶豆腐</li><li>下午：参观马头琴博物馆</li><li>晚上：观看《我的故乡在北疆》实景剧</li><li>住宿：草原特色蒙古包</li></ul></div><div class="day-block"><h4>第二天</h4><ul><li>上午：正蓝旗金莲川草原、元上都遗址</li><li>中午：蒙古族传统茶点</li><li>下午：马头琴演奏家面对面，学习基础技法</li><li>晚上：草原星空音乐会 · 即兴合奏</li><li>住宿：正蓝旗特色民宿</li></ul></div><div class="day-block"><h4>第三天</h4><ul><li>上午：皮雕技艺体验工作坊</li><li>中午：托克托面塑体验（草原动物造型）</li><li>下午：W/E作品交换仪式 + 分享心得</li><li>傍晚：返程</li></ul></div></div>
+                        <div class="interact-box mongolia"><h5>🎯 草原限定 · 互动体验</h5><div class="interact-items"><div class="interact-item mongolia"><strong>马头琴的故事</strong> 学一段旋律，在日落时集体演奏并录制短视频</div><div class="interact-item mongolia"><strong>皮雕交换盲盒</strong> 匿名包装作品，随机抽取并猜测文化解读</div><div class="interact-item mongolia"><strong>那达慕体验</strong> 骑马、射箭、博克（按季节安排）</div></div></div>
+                        <div class="meta-footer"><div class="meta-tag">📅 5月-10月</div><div class="digital-assets"><span>🏆 专属作品数字证书</span> <span>🎥 星空合奏短视频</span> <span>📸 游牧素材包</span></div></div>
                     </div>
                 </div>
             </section>
@@ -1031,93 +935,117 @@
                 </div>
             </section>
 
-            <!-- 文创商城模块 (已重新设计) -->
-            <section id="mall-page" class="module-page active">
+            <!-- 文创商城模块（已删除底部提示格子） -->
+            <section id="mall-page" class="module-page">
                 <div class="section-title">
                     🛍️ 文创商城 · 匠心好物
                     <span class="section-sub">非遗文创·可带走的文化</span>
                 </div>
                 <div class="mall-grid">
-                    <!-- 商品1：五张过门笺套装 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                             <img src="./三创会/wenchuang1.jpg" alt="过门笺五福套装" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
-                        </div>
-                        <h3 class="product-title">过门笺 · 五福套装</h3>
-                        <div class="product-desc">五张手工刻纸过门笺，寓意五福临门。含传统图案“富贵不断头”“八宝”等，可装裱或张贴。</div>
-                        <div class="product-meta">
-                            <span class="product-price">¥30</span>
-                            <span class="product-tag">山东日照</span>
-                        </div>
-                    </div>
-
-                    <!-- 商品2：剪纸材料包 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                             <img src="./三创会/wenchuang2.jpg" alt="剪纸材料包入门套装" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
-                        </div>
-                        <h3 class="product-title">剪纸材料包 · 入门套装</h3>
-                        <div class="product-desc">工具+红纸+底稿，含刻刀、蜡盘、样稿。零基础体验过门笺刻纸技艺，亲手制作专属作品。</div>
-                        <div class="product-meta">
-                            <span class="product-price">¥49</span>
-                            <span class="product-tag">工具齐全</span>
-                        </div>
-                    </div>
-
-                    <!-- 商品3：马头琴冰箱贴 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                             <img src="./三创会/wenchuang3.jpg" alt="马头琴草原冰箱贴" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
-                        </div>
-                        <h3 class="product-title">马头琴 · 草原冰箱贴</h3>
-                        <div class="product-desc">DesignByAriRise 原创设计，精致马头琴造型冰箱贴，金属烤漆，磁力强。草原文化随身带。</div>
-                        <div class="product-meta">
-                            <span class="product-price">¥45</span>
-                            <span class="product-tag">内蒙古</span>
-                        </div>
-                    </div>
-
-                    <!-- 商品4：缠花DIY饰品套装 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                             <img src="./三创会/wenchuang4.jpg" alt="缠花DIY国风视频套装" style="width:100%; height:100%; object-fit: cover; border-radius: 32px;">
-                        </div>
-                        <h3 class="product-title">缠花DIY · 国风饰品套装</h3>
-                        <div class="product-desc">包含缠花线、铜丝、木簪、胸针配件、剪刀、胶水等。可制作发簪/胸针，感受指尖缠绕之美。</div>
-                        <div class="product-meta">
-                            <span class="product-price">¥69.9</span>
-                            <span class="product-tag">全套材料</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mall-footer-note">
-                    🌟 所有文创收益均用于支持非遗传承人 & 乡村振兴 🌟
+                    <div class="product-card"><div class="product-image"><img src="./三创会/wenchuang1.jpg" alt="过门笺"></div><h3 class="product-title">过门笺 · 五福套装</h3><div class="product-desc">五张手工刻纸过门笺，寓意五福临门。含传统图案“富贵不断头”“八宝”等，可装裱或张贴。</div><div class="product-meta"><span class="product-price">¥30</span><span class="product-tag">山东日照</span></div></div>
+                    <div class="product-card"><div class="product-image"><img src="./三创会/wenchuang2.jpg" alt="剪纸材料包"></div><h3 class="product-title">剪纸材料包 · 入门套装</h3><div class="product-desc">工具+红纸+底稿，含刻刀、蜡盘、样稿。零基础体验过门笺刻纸技艺，亲手制作专属作品。</div><div class="product-meta"><span class="product-price">¥49</span><span class="product-tag">工具齐全</span></div></div>
+                    <div class="product-card"><div class="product-image"><img src="./三创会/wenchuang3.jpg" alt="马头琴冰箱贴"></div><h3 class="product-title">马头琴 · 草原冰箱贴</h3><div class="product-desc">DesignByAriRise 原创设计，精致马头琴造型冰箱贴，金属烤漆，磁力强。草原文化随身带。</div><div class="product-meta"><span class="product-price">¥45</span><span class="product-tag">内蒙古</span></div></div>
+                    <div class="product-card"><div class="product-image"><img src="./三创会/wenchuang4.jpg" alt="缠花DIY"></div><h3 class="product-title">缠花DIY · 国风饰品套装</h3><div class="product-desc">包含缠花线、铜丝、木簪、胸针配件、剪刀、胶水等。可制作发簪/胸针，感受指尖缠绕之美。</div><div class="product-meta"><span class="product-price">¥69.9</span><span class="product-tag">全套材料</span></div></div>
                 </div>
             </section>
 
-            <!-- 关于我们模块（原合作共建已删除） -->
+            <!-- 关于我们模块 -->
             <section id="about-page" class="module-page">
                 <div class="section-title">
-                    📖 关于我们 · 非遗传承
-                    <span class="section-sub">了解我们</span>
+                    📖 关于我们 · 共创团队
+                    <span class="section-sub">中外青年，携手非遗</span>
                 </div>
-                <div class="placeholder-module">
-                    <h3>📖 关于我们</h3>
-                    <p>非遗洋探客 · 中外青年共创 · 乡村活化 · 文化传承</p>
-                    <p style="margin-top: 20px;">让非遗跨越山海，成为世界青年交流的桥梁。</p>
+                
+                <!-- 学生团队成员标题 -->
+                <div class="team-category-title">👥 学生团队成员</div>
+                <div class="students-grid">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="./三创会/梁楚涵.png" alt="梁楚涵" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span><span>梁楚涵</span></div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">梁楚涵 <span class="member-role">队长</span></div>
+                            <div class="member-school">燕山大学文法学院 · 汉语国际教育专业 2025级本科生</div>
+                            <div class="member-desc">擅长组织策划、沟通协作，负责项目的创意提出，对接合作方。在项目计划书中负责商业模式、产品介绍模块撰写，运营非遗洋探客。</div>
+                            <div class="member-detail"><strong>🎯 统筹引领</strong> 创意发起 · 合作对接</div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="./三创会/宋锦赛.png" alt="宋锦赛" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span><span>宋锦赛</span></div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">宋锦赛 <span class="member-role">队员</span></div>
+                            <div class="member-school">燕山大学材料科学与工程学院 · 材料类专业 2025级本科生</div>
+                            <div class="member-desc">具备较强的数据分析能力，熟练使用Excel进行数据整理，逻辑思维能力强，曾获国际数学建模大赛河北赛区一等奖。在项目中负责市场分析和微信视频号宣传部分。</div>
+                            <div class="member-detail"><strong>📊 数据分析</strong> 市场研究 · 视频号运营</div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="./三创会/程博.png" alt="程博" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span><span>程博</span></div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">程博 <span class="member-role">队员</span></div>
+                            <div class="member-school">燕山大学体育学院 · 社会体育指导与管理专业 2025级本科生</div>
+                            <div class="member-desc">负责本项目市场运营部分及抖音账号运营，熟练掌握WPS和Excel相关工具的使用。负责本项目市场运营以及项目策划书修改工作，做事严谨扎实，性格沉稳。</div>
+                            <div class="member-detail"><strong>📱 市场运营</strong> 抖音运营 · 策划执行</div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="./三创会/荆凡盛.png" alt="荆凡盛" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>💻</span><span>荆凡盛</span></div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">荆凡盛 <span class="member-role">队员</span></div>
+                            <div class="member-school">华北电力大学控制与计算机工程学院 · 软件工程专业 2025级本科生</div>
+                            <div class="member-desc">负责本项目官方网页开发，熟练掌握前端开发工具与相关技术栈的使用，使用VSCode进行网页开发，学习能力强，做事认真务实。</div>
+                            <div class="member-detail"><strong>🌐 技术开发</strong> 全站开发 · 前端架构</div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="./三创会/李静.png" alt="李静" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📊</span><span>李静</span></div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">李静 <span class="member-role">队员</span></div>
+                            <div class="member-school">燕山大学文法学院 · 法学专业 2025级本科生</div>
+                            <div class="member-desc">熟练掌握WPS和Excel工具的使用，性格沉稳负责，注重细节，做事严谨。在本项目中担任财务分析、风险分析和小红书运营，负责搭建财务模型，进行收入成本测算、现金流预测和识别项目运营中的市场风险、技术风险、财务风险和管理风险并制定应急预案。</div>
+                            <div class="member-detail"><strong>💰 财务风控</strong> 财务模型 · 风险预案 · 小红书运营</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 指导老师标题 -->
+                <div class="team-category-title">🎓 指导老师</div>
+                <div class="teacher-grid">
+                    <div class="member-card">
+                        <div class="member-photo">
+                            <img src="./三创会/孙羽.png" alt="孙羽" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>🎓</span><span>孙羽</span></div>'">
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">孙羽 <span class="member-role mentor">指导老师</span></div>
+                            <div class="member-school">燕山大学 · 汉语言文字学专业博士</div>
+                            <div class="member-desc">主要研究方向为现代汉语语法、汉语本体知识与教学语法研究。参研国家社科基金重点项目、青年项目及国家语委科研项目；发表CSSCI论文；获黑龙江省语言学会学术年会论文评比二等奖。2024-2025年连续指导团队获“汉教英雄会”最佳智慧团队奖；2025年获燕山大学创新大赛优秀指导教师二等奖；2024年获“中学西渐杯”全国汉语国际教育综合技能大赛优秀指导教师及“语言桥杯”数智化教学技能交流展示活动优秀指导教师三等奖。</div>
+                            <div class="member-detail"><strong>🏅 学术引领</strong> 专业指导 · 非遗教育赋能</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-quote">
+                    🌟 我们是一群热爱乡土、心怀世界的青年，用非遗连接中外，用共创激活乡村。期待你的加入，一起让传统焕发新生！
                 </div>
             </section>
         </div>
 
-        <!-- 页脚 -->
         <footer>
             <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
                 <div>
                     <div style="font-size: 24px; font-weight: 900; color: var(--primary-red);">非遗洋探客</div>
                     <p style="margin: 15px 0; max-width: 350px;">中外青年共创 · 乡村活化 · 文化传承</p>
-                    <p style="color: #767676;">© 2026 非遗洋探客 ｜ 让非遗成为世界语言</p>
+                    <p>© 2026 非遗洋探客 ｜ 让非遗成为世界语言</p>
                 </div>
-                <div style="display: flex; gap: 50px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 50px;">
                     <div><strong>探索</strong><br>发现非遗<br>体验项目<br>文创商城</div>
                     <div><strong>社区</strong><br>WE墙社区<br>关于我们</div>
                 </div>
